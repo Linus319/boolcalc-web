@@ -22,8 +22,6 @@ export default function SyntaxRules() {
                 </tbody>
                 </table>
             </div>
-            <h1 className="mb-4 text-center
-            ">All boolean variables must be single alphabetic characters (case-insensitive)</h1>
         </>
     )
 }

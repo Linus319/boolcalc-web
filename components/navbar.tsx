@@ -22,6 +22,12 @@ export default function Navbar() {
         margin: 0,
         padding: 0
       }}>
+        <li>
+          <Link href='/syntax' style={{ textDecoration: 'none', color: '#777' }}>
+            Syntax Rules
+          </Link>
+        </li>
+        
       </ul>
     </nav>
   );
