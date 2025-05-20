@@ -5,12 +5,37 @@ import { generateTruthTable } from "../utils/bc_generate_truth_table";
 import TruthTable from "./truth-table";
 import { Result } from "@/utils/bc_syntax";
 
+function isalpha(char : string) {
+  return char.toLowerCase() !== char.toUpperCase();
+}
+
+function addMulOperators(input : string) {
+    let result = "";
+    for (let i = 0; i < input.length; i++) {
+        if (i === 0) {
+            result += input[i];
+            continue;
+        }
+        else if ((isalpha(input[i]) && isalpha(input[i-1])) || input[i] === '!' && isalpha(input[i-1])) {
+            result += '*' + input[i];
+        }
+        else {
+            result += input[i];
+        }
+    }
+    return result;
+}
+
 export default function ExprInput() {
     const [input, setInput] = useState("");
     const [result, setResult] = useState<Result | null>(null);
 
-    function handleSubmit(e: React.FormEvent) {
+
+
+    function handleSubmit(e: any) {
         e.preventDefault();
+        let input = e.target[0].value
+        input = addMulOperators(input);
         const res = generateTruthTable(input);
         setResult(res);
     }
