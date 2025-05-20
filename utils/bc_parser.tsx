@@ -17,7 +17,7 @@ type Program = { type: 'Program'; expr: E };
 
 // Parser implementation
 export const parser = P.createLanguage({
-  VarB: () => P.regex(/[a-z]/).map(name => ({ type: 'VarB', name })),
+  VarB: () => P.regex(/[a-zA-Z]/).map(name => ({ type: 'VarB', name })),
 
   BaseE: r => P.lazy(() => r.ParenExpr).map(expr => ({ type: 'BaseE', expr })),
   BoolB: r => r.VarB.map(v => ({ type: 'BoolB', value: v })),
