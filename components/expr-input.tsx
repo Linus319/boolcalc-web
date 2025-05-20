@@ -32,11 +32,10 @@ export default function ExprInput() {
 
 
 
-    function handleSubmit(e: any) {
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        let input = e.target[0].value
-        input = addMulOperators(input);
-        const res = generateTruthTable(input);
+        const processedInput = addMulOperators(input);
+        const res = generateTruthTable(processedInput);
         setResult(res);
     }
 
